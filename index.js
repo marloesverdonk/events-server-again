@@ -3,6 +3,7 @@ const port = 4000
 const db = require('./db')
 
 const Event = require('./event/model')
+//const User = require('./user/model')
 
 //Routers
 const loginRouter = require('./auth/router')
