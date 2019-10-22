@@ -1,10 +1,13 @@
 const express = require('express')
 const port = 4000
 const db = require('./db')
-const loginRouter = require('./auth/router')
 
 const Event = require('./event/model')
+
+//Routers
+const loginRouter = require('./auth/router')
 const eventRouter = require('./event/router')
+const userRouter = require('./user/router')
 
 const cors = require('cors')
 const bodyParser = require('body-parser')
@@ -13,10 +16,17 @@ const parserMiddleware = bodyParser.json()
 
 const app = express()
 
+// const loggingMiddleWare = (req, res, next) => {
+//   console.log('I am a Middleware', Date.now())
+//   next()
+// }
+
+// app.use(loggingMiddleWare)
 app.use(corsMiddleware)
 app.use(parserMiddleware)
 app.use(eventRouter)
 app.use(loginRouter)
+app.use(userRouter)
 
 
 
